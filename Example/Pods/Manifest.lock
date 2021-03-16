@@ -1,0 +1,16 @@
+PODS:
+  - Kitap (0.1.0)
+
+DEPENDENCIES:
+  - Kitap (from `../`)
+
+EXTERNAL SOURCES:
+  Kitap:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kitap: e3c015303aa74c90062f623db81630495d75c7d1
+
+PODFILE CHECKSUM: 2444028e3b39acf3157f421928c5fd71d37d7e0b
+
+COCOAPODS: 1.10.1

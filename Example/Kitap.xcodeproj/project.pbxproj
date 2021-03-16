@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0410B9246DADBF461CC1A2CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0410B9246DADBF461CC1A2CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		106164A007F4988AD676F110 /* Pods_Kitap_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitap_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D77DDBE634905F3F9B55431 /* Pods_Kitap_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitap_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Kitap_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitap_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,11 +42,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6770E16DC114A0FE22329641 /* Pods-Kitap_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitap_Example.release.xcconfig"; path = "Target Support Files/Pods-Kitap_Example/Pods-Kitap_Example.release.xcconfig"; sourceTree = "<group>"; };
-		922EC0E5EAAFC6DC190F68A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		922EC0E5EAAFC6DC190F68A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B26EB04D870FA6C7966B528C /* Pods-Kitap_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitap_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Kitap_Tests/Pods-Kitap_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA62CAFC5E900A38EEBCD6D0 /* Pods-Kitap_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitap_Example.debug.xcconfig"; path = "Target Support Files/Pods-Kitap_Example/Pods-Kitap_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BC072016E72529AD9CF4EE95 /* Pods-Kitap_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitap_Tests.release.xcconfig"; path = "Target Support Files/Pods-Kitap_Tests/Pods-Kitap_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E893699620CF50D71329163C /* Kitap.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Kitap.podspec; path = ../Kitap.podspec; sourceTree = "<group>"; };
+		E893699620CF50D71329163C /* Kitap.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Kitap.podspec; path = ../Kitap.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,6 @@
 				B26EB04D870FA6C7966B528C /* Pods-Kitap_Tests.debug.xcconfig */,
 				BC072016E72529AD9CF4EE95 /* Pods-Kitap_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -213,10 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = A5C24K5A7U;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = A5C24K5A7U;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +228,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -478,6 +480,7 @@
 			baseConfigurationReference = BA62CAFC5E900A38EEBCD6D0 /* Pods-Kitap_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = A5C24K5A7U;
 				INFOPLIST_FILE = Kitap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -493,6 +496,7 @@
 			baseConfigurationReference = 6770E16DC114A0FE22329641 /* Pods-Kitap_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = A5C24K5A7U;
 				INFOPLIST_FILE = Kitap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B26EB04D870FA6C7966B528C /* Pods-Kitap_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = A5C24K5A7U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -529,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC072016E72529AD9CF4EE95 /* Pods-Kitap_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = A5C24K5A7U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

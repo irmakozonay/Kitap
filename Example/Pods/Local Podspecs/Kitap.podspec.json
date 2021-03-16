@@ -1,0 +1,22 @@
+{
+  "name": "Kitap",
+  "version": "0.1.0",
+  "summary": "A short description of Kitap.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/10302731/Kitap",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "10302731": "irmakoz@msn.com"
+  },
+  "source": {
+    "git": "https://github.com/10302731/Kitap.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "Kitap/Classes/**/*"
+}
