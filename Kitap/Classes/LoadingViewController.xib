@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,19 +19,28 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-gz-3Fb">
-                    <rect key="frame" x="197" y="280" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lru-Ie-8aC">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-gz-3Fb">
+                            <rect key="frame" x="188.5" y="200" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Acx-gz-3Fb" firstAttribute="centerX" secondItem="lru-Ie-8aC" secondAttribute="centerX" id="Zbh-cv-BZq"/>
+                        <constraint firstItem="Acx-gz-3Fb" firstAttribute="top" secondItem="lru-Ie-8aC" secondAttribute="top" constant="200" id="d4M-o0-dNM"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="139" y="85"/>
+            <constraints>
+                <constraint firstItem="lru-Ie-8aC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BaC-v2-Hg2"/>
+                <constraint firstItem="lru-Ie-8aC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hgl-SS-NcW"/>
+                <constraint firstAttribute="bottom" secondItem="lru-Ie-8aC" secondAttribute="bottom" id="aIg-Ya-uUM"/>
+                <constraint firstItem="lru-Ie-8aC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="dDk-D6-yoO"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="84.375"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
