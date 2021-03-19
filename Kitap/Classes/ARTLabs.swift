@@ -43,57 +43,67 @@ public class ARTLabs : NSObject, QLPreviewControllerDataSource/*, QLPreviewContr
 //            activityIndicator.startAnimating()
 //            self.activeView?.addSubview(activityIndicator)
 //        }
-        downloadSampleUSDZ()
+        delegate?.modelLoadStarted()
+        self.getModelURL(productSKU: productSKU, completion: {(modelUrl) in
+            print("modelUrl: \(modelUrl)")
+            if let modelUrl = modelUrl, let url = URL(string: modelUrl) {
+                self.downloadUSDZFile(url: url, finished: {() in
+                    DispatchQueue.main.async {
+                        self.presentAR()
+                        self.delegate?.modelLoadFinished()
+                    }
+                })
+            }
+        })
     }
     
 //    public func setActiveView(_ activeView: UIView) { //mail01 bunda sorun kisinin viewi uzerinde islem yapiyoruz ve view uzerinde yapilacak farkli islemleri kontrol edemeyiz + tasarim uyumsuz kalabilir
 //        self.activeView = activeView
 //    }
     
-    //mail3 ben olsam getModelURL + completion - getModelURL de urlden sonra download vb baya islem gerekiyo eklerdim
+    //mail3 ?belki? ben olsam getModel + completion eklerdim - getModelURL de urlden sonra download vb baya islem gerekiyo
     //mail1 loading ekrani gerekli
     //mail2 swift4 ile yapiyorum ve ios9 sonrasi destekli
     
-    public func getModelURL(productSKU: String, completion: @escaping (_ modelUrl: String?) -> Void) { //mail2 or mail3 completion block ile olmali direk string return edemez - ya da semaphore kullanicam
-        let url = URL(string: "https://staging.api.artlabs.ai/secure/product/" + productSKU)!
+    public func getModelURL(productSKU: String, completion: @escaping (_ modelUrl: String?) -> Void) { //mail2 completion block ile olmali direk string return edemez - ya da semaphore kullanicam
+        if let url = URL(string: "https://staging.api.artlabs.ai/secure/product/" + productSKU) {
         var request = URLRequest(url: url)
         request.setValue(ARTLabs.apiKey, forHTTPHeaderField: "x-api-key")
         print(ARTLabs.apiKey)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print ("error: \(error!)")
-                return
-            }
-            guard let data = data else {
-                print("No data")
-                return
-            }
-            print(String(decoding: data, as: UTF8.self))
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 401 {
-                    print("Please check your API key")
-                    return
-                } else if httpResponse.statusCode != 200 {
-                    print("Response code: \(httpResponse.statusCode)")
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    print ("error: \(error!)")
                     return
                 }
+                guard let data = data else {
+                    print("No data")
+                    return
+                }
+                print(String(decoding: data, as: UTF8.self))
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 401 {
+                        print("Please check your API key")
+                        return
+                    } else if httpResponse.statusCode != 200 {
+                        print("Response code: \(httpResponse.statusCode)")
+                        return
+                    }
+                }
+                guard let product = try? JSONDecoder().decode(Product.self, from: data) else {
+                    print("Error: Couldn't decode data")
+                    return
+                }
+                print(product.name)
+                if let productModel = product.models.first(where: { $0.file.ext == ".usdz" }) {
+                    completion(productModel.file.url)
+                }
             }
-            guard let product = try? JSONDecoder().decode(Product.self, from: data) else {
-                print("Error: Couldn't decode data")
-                return
-            }
-            print(product.name)
-            if let productModel = product.models.first(where: { $0.file.ext == ".usdz" }) {
-                completion(productModel.file.url)
-            }
+            task.resume()
         }
-        task.resume()
     }
     
-    func downloadSampleUSDZ() {
+    func downloadUSDZFile(url: URL, finished: @escaping () -> Void) { //"https://artlabs-3d.s3.eu-central-1.amazonaws.com/2a17bd30_2fe4_4202_81ad_b6cb3929e767_3e3ffd43d4.usdz"
         print("start download")
-        delegate?.modelLoadStarted()
-        let url = URL(string: "https://artlabs-3d.s3.eu-central-1.amazonaws.com/2a17bd30_2fe4_4202_81ad_b6cb3929e767_3e3ffd43d4.usdz")!
         let downloadTask = URLSession.shared.downloadTask(with: url) { [self] urlOrNil, responseOrNil, errorOrNil in
             guard let fileURL = urlOrNil else { return }
             do {
@@ -108,10 +118,7 @@ public class ARTLabs : NSObject, QLPreviewControllerDataSource/*, QLPreviewContr
                 try FileManager.default.moveItem(at: fileURL, to: savedURL)
                 self.modelURL = savedURL
                 print("savedURL: \(savedURL)")
-                DispatchQueue.main.async {
-                    delegate?.modelLoadFinished()
-                    self.presentAR()
-                }
+                finished()
             } catch {
                 print ("file error: \(error)")
             }

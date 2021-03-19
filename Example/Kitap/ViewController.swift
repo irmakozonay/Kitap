@@ -25,7 +25,7 @@ class ViewController: UIViewController, ARTLabsDelegate {
     
     @IBAction func startAR(_ sender: UIButton){
 //        sender.isEnabled = false
-        ARTLabs.artlabs().startARSession(productSKU: "")
+        ARTLabs.artlabs().startARSession(productSKU: "puma")
     }
     
     @IBAction func showAR(){
